@@ -13,7 +13,8 @@ namespace StoreAppWeb.Controllers
         }
         public IActionResult Index()
         {
-            return View(_productRepository.GetAll);
+            var model = _productRepository.GetAll;
+            return View(model);
         }
 
     }
