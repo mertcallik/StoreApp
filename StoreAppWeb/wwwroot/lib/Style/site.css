@@ -1,0 +1,67 @@
+﻿body {
+    font-family: 'oswald',Poppins, Impact, Verdana, sans-serif;
+
+}
+.card{
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 30%;
+}
+.addtobasketbutton {
+    transition: all 0.3s ease;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.addtobasketbutton {
+    transition: all 0.3s ease;
+    background-color: #007bff;
+    color: #fff;
+    padding: 6px 12px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.addtobasketbutton span {
+    margin-right: 8px;
+}
+
+.addtobasketbutton:hover {
+    background-color: #0056b3;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-color: #0056b3;
+}
+
+.addtobasketbutton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.addtobasketbutton i {
+    transition: transform 0.3s ease;
+}
+
+.addtobasketbutton:hover i {
+    transform: rotate(20deg);
+}

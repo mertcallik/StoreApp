@@ -1,7 +1,53 @@
-﻿@model IQueryable<StoreApp.Data.Concreate.Product>
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model ProductListViewModel
 @{
+    var currentPage=Model.PageInfo.CurrentPage;
 }
-Selaaaaam
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-1">
+            <vc:categories-list></vc:categories-list>
+        </div>
+        @if (Model.Products.Count()==0)
+        {
+            <h1 class="display-3 text-center my-5 py-5">MALESEF ARADIĞINIZ ÜRÜNÜ BULAMADIK :/</h1>
+        }
+
+        <div class="col-sm-11">
+            @foreach (var item in Model.Products)
+            {
+                <div class="card d-inline-flex flex-column">
+                    <div class="card-body">
+                        <div class="text-center my-1">
+                            <h5>@item.Name</h5>
+                            <small >@item.Description</small>
+                        </div>
+                        <div class="">
+                            <p class="text-primary">@item.Price.ToString("C0")</p>
+                            <button class="btn btn-sm btn-primary addtobasketbutton mx-auto">
+                                <span><i class="bi bi-basket-fill"></i></span>
+                                Sepete Ekle
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@(currentPage-1)" >Previous</a></li>
+                        <li class="page-item">
+                            <div class="text-center btn-group"  page-model="@Model.PageInfo" page-action="index" page-class="btn" page-class-link="btn-outline-primary" page-class-active="btn-primary">
+
+                            </div>
+                        </li>
+
+                        <li class="page-item"><a class="page-link" asp-action="Index"  asp-route-page="@(currentPage+1)">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+   
+
+        </div>
+    </div>
+</div>

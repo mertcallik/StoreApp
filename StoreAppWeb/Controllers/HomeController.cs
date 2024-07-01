@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StoreApp.Data.Abstract;
-using StoreApp.Data.Concreate;
+using StoreApp.Data.Model;
+using StoreAppWeb.Models;
 
 namespace StoreAppWeb.Controllers
 {
@@ -11,9 +12,30 @@ namespace StoreAppWeb.Controllers
         {
             _productRepository= productRepository;
         }
-        public IActionResult Index()
+
+        private int _pageSize = 3;
+        public IActionResult Index(int page=1)
         {
-            var model = _productRepository.GetAll;
+            var products = _productRepository.GetAll.Skip((page-1)*_pageSize)
+                .Select(p => new ProductViewModel()
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Price = p.Price,
+                Description = p.Description,
+                Category = p.Category,
+            }).Take(_pageSize);
+
+            var model = new ProductListViewModel()
+            {
+                Products = products,
+                PageInfo = new PageInfo()
+                {
+                    TotalItems = _productRepository.GetAll.Count(),
+                    ItemsPerPage = _pageSize,
+                    CurrentPage = page
+                }
+            };
             return View(model);
         }
 

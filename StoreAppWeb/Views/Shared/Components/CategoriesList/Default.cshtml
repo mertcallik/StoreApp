@@ -1,0 +1,12 @@
+﻿@model IEnumerable<string>
+@{
+}
+<div class="d-grid gap-1">
+    <a class="btn-outline-primary text-decoration-none text-dark" asp-controller="Home" asp-action="Index" asp-route-page="1">AnaSayfa</a>
+    <hr/>
+    @foreach (var category in Model)
+    {
+        <h6><a asp-action="Index" asp-controller="Home" asp-route-category="@category">@category</a></h6>
+        <hr/>
+    }
+</div>
