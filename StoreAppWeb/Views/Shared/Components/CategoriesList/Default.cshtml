@@ -1,12 +1,16 @@
-﻿@model IEnumerable<string>
+﻿@model IQueryable<CategoryViewModel>
 @{
 }
 <div class="d-grid gap-1">
-    <a class="btn-outline-primary text-decoration-none text-dark" asp-controller="Home" asp-action="Index" asp-route-page="1">AnaSayfa</a>
+    <a class="@(ViewBag.SelectedCategory ==null ?"btn btn-sm btn-primary":"btn btn-sm btn-outline-primary")" asp-controller="Home" asp-action="Index"  >AnaSayfa</a>
     <hr/>
     @foreach (var category in Model)
     {
-        <h6><a asp-action="Index" asp-controller="Home" asp-route-category="@category">@category</a></h6>
+        <h6>
+            <a asp-controller="Home" asp-action="Index" asp-route-category="@category.Url" class="@(ViewBag.SelectedCategory == category.Url?"btn btn-sm btn-primary w-100":"btn btn-sm w-100 btn-outline-primary")">
+                @category.Name
+            </a>
+            </h6>
         <hr/>
     }
 </div>

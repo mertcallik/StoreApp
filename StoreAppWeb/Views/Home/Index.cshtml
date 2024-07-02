@@ -10,7 +10,7 @@
         </div>
         @if (Model.Products.Count()==0)
         {
-            <h1 class="display-3 text-center my-5 py-5">MALESEF ARADIĞINIZ ÜRÜNÜ BULAMADIK :/</h1>
+            <h1 class="text-center">MALESEF ARADIĞINIZ ÜRÜNÜ BULAMADIK :/</h1>
         }
 
         <div class="col-sm-11">
@@ -32,20 +32,24 @@
                     </div>
                 </div>
             }
-            <div>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@(currentPage-1)" >Previous</a></li>
-                        <li class="page-item">
-                            <div class="text-center btn-group"  page-model="@Model.PageInfo" page-action="index" page-class="btn" page-class-link="btn-outline-primary" page-class-active="btn-primary">
+            @if (Model.PageInfo.TotalItems != 0)
+            {
+                <div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link @(Model.PageInfo.CurrentPage ==1 ?"collapse":"")" asp-action="Index" asp-route-page="@(currentPage-1)">Previous</a></li>
+                            <li class="page-item">
+                                <div class="text-center btn-group"  page-model="@Model.PageInfo" page-action="index" page-class="btn" page-class-link="btn-outline-primary" page-class-active="btn-primary">
 
-                            </div>
-                        </li>
+                                </div>
+                            </li>
+                        
+                            <li class="page-item"><a class="page-link @(Model.PageInfo.TotalPages==Model.PageInfo.CurrentPage ?"collapse":"")" asp-action="Index" asp-route-page="@(currentPage+1)">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            }
 
-                        <li class="page-item"><a class="page-link" asp-action="Index"  asp-route-page="@(currentPage+1)">Next</a></li>
-                    </ul>
-                </nav>
-            </div>
    
 
         </div>

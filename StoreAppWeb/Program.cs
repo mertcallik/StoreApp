@@ -10,7 +10,9 @@ var app = builder.Build();
 
 
 app.UseStaticFiles();
-app.MapControllerRoute("Default","/products/{page}",new{controller="Home",Action="Index"});
+app.MapControllerRoute("category_filter", "/urunler/{category}", new{controller="Home",Action="Index"});
+app.MapControllerRoute("urunswithpages","/urunler/{page}",new{controller="Home",Action="Index"});
+app.MapControllerRoute("products_details", "/{name}", new { controller = "Home", Action = "Index" });
 
 app.MapControllerRoute("Default", "{controller=Home}/{action=Index}/{id?}");
 app.Run();

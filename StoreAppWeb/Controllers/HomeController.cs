@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using StoreApp.Data.Abstract;
 using StoreApp.Data.Model;
 using StoreAppWeb.Models;
@@ -10,28 +11,26 @@ namespace StoreAppWeb.Controllers
         private readonly IStoreRepository<Product> _productRepository;
         public HomeController(IStoreRepository<Product> productRepository)
         {
-            _productRepository= productRepository;
+            _productRepository = productRepository;
         }
 
         private int _pageSize = 3;
-        public IActionResult Index(int page=1)
+        public IActionResult Index(string category, int page = 1)
         {
-            var products = _productRepository.GetAll.Skip((page-1)*_pageSize)
-                .Select(p => new ProductViewModel()
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Price = p.Price,
-                Description = p.Description,
-                Category = p.Category,
-            }).Take(_pageSize);
+
 
             var model = new ProductListViewModel()
             {
-                Products = products,
+                Products = _productRepository.GetProductsByCategory(category, page, _pageSize).Select(x=>new ProductViewModel()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Description = x.Description,
+                    Price = x.Price
+                }),
                 PageInfo = new PageInfo()
                 {
-                    TotalItems = _productRepository.GetAll.Count(),
+                    TotalItems = _productRepository.GetProductCount(category),
                     ItemsPerPage = _pageSize,
                     CurrentPage = page
                 }
