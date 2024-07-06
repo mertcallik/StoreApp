@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace StoreApp.Data.Concreate
            await _context.SaveChangesAsync();
         }
 
+        [SuppressMessage("ReSharper.DPA", "DPA0000: DPA issues")]
         public int GetProductCount(string category)
         {
             return category == null

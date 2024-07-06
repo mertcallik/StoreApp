@@ -14,7 +14,7 @@ namespace StoreAppWeb.Controllers
             _productRepository = productRepository;
         }
 
-        private int _pageSize = 3;
+        private int _pageSize = 6;
         public IActionResult Index(string category, int page = 1)
         {
 
