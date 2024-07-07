@@ -24,10 +24,15 @@
                         </div>
                         <div class="">
                             <p class="text-primary">@item.Price.ToString("C0")</p>
-                            <button class="btn btn-sm btn-primary addtobasketbutton mx-auto">
-                                <span><i class="bi bi-basket-fill"></i></span>
-                                Sepete Ekle
-                            </button>
+                            <form asp-page="/Cart"  method="get">
+                                <input name="id" value="@item.Id" type="hidden" />
+                                <button type="submit" class="btn btn-sm btn-primary addtobasketbutton mx-auto">
+                                    <span><i class="bi bi-basket-fill"></i></span>
+                                    Sepete Ekle
+                                </button>
+                            </form>
+                            
+
                         </div>
                     </div>
                 </div>

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreAppWeb", "StoreAppWeb\StoreAppWeb.csproj", "{617417B1-63D9-4788-928D-9E98CD2A45E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreAppWeb", "StoreAppWeb\StoreAppWeb.csproj", "{617417B1-63D9-4788-928D-9E98CD2A45E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreApp.Data", "StoreApp.Data\StoreApp.Data.csproj", "{C545425D-ECA6-4424-B5A4-4501ADEE721A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreApp.Data", "StoreApp.Data\StoreApp.Data.csproj", "{C545425D-ECA6-4424-B5A4-4501ADEE721A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
