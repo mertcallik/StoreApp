@@ -24,9 +24,9 @@
                         </div>
                         <div class="">
                             <p class="text-primary">@item.Price.ToString("C0")</p>
-                            <form asp-page="/Cart"  method="get">
+                            <form asp-page="/Cart"  method="post">
                                 <input name="id" value="@item.Id" type="hidden" />
-                                <button type="submit" class="btn btn-sm btn-primary addtobasketbutton mx-auto">
+                                <button type="submit" class="btn btn-sm addtobasketbutton mx-auto">
                                     <span><i class="bi bi-basket-fill"></i></span>
                                     Sepete Ekle
                                 </button>
@@ -44,7 +44,7 @@
                         <ul class="pagination">
                             <li class="page-item"><a class="page-link @(Model.PageInfo.CurrentPage ==1 ?"collapse":"")" asp-action="Index" asp-route-page="@(currentPage-1)">Previous</a></li>
                             <li class="page-item">
-                                <div class="text-center btn-group"  page-model="@Model.PageInfo" page-action="index" page-class="btn" page-class-link="btn-outline-primary" page-class-active="btn-primary">
+                                <div class="text-center btn-group"  page-model="@Model.PageInfo" page-action="index" page-class="btn" page-class-link="btn-outline-dark" page-class-active="btn-dark">
 
                                 </div>
                             </li>

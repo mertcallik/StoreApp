@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StoreApp.Data.Concreate;
 
@@ -11,9 +12,11 @@ using StoreApp.Data.Concreate;
 namespace StoreAppWeb.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    partial class StoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240709094836_Production")]
+    partial class Production
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -210,8 +213,8 @@ namespace StoreAppWeb.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -223,42 +226,42 @@ namespace StoreAppWeb.Migrations
                             Id = 1,
                             Description = "Harika bir cihaz",
                             Name = "Iphone 15 Plus",
-                            Price = 62000.0
+                            Price = 62000m
                         },
                         new
                         {
                             Id = 2,
                             Description = "Harika bir cihaz",
                             Name = "Iphone 15",
-                            Price = 50000.0
+                            Price = 50000m
                         },
                         new
                         {
                             Id = 3,
                             Description = "Harika bir cihaz",
                             Name = "Iphone 15 Pro Max",
-                            Price = 90000.0
+                            Price = 90000m
                         },
                         new
                         {
                             Id = 4,
                             Description = "Harika bir cihaz",
                             Name = "Iphone 15 Pro",
-                            Price = 80000.0
+                            Price = 80000m
                         },
                         new
                         {
                             Id = 5,
                             Description = "Harika bir cihaz",
                             Name = "Iphone 14 Pro Max",
-                            Price = 60000.0
+                            Price = 60000m
                         },
                         new
                         {
                             Id = 6,
                             Description = "Harika bir cihaz",
                             Name = "Iphone 14 Pro",
-                            Price = 55000.0
+                            Price = 55000m
                         });
                 });
 

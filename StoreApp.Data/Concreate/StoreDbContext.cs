@@ -57,5 +57,6 @@ namespace StoreApp.Data.Concreate
 
         public virtual DbSet<Product> Products => Set<Product>();
         public virtual DbSet<Category> Categories => Set<Category>();
+        public virtual DbSet<Order> Orders => Set<Order>();
     }
 }

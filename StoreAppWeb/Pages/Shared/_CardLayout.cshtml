@@ -4,10 +4,17 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="lib/bootstrapicons/font/bootstrap-icons.min.css" rel="stylesheet"/>
+    <style>
+        @await RenderSectionAsync("style",false)
+    </style>
 </head>
 <body>
-    <div>
-        @RenderBody()
-    </div>
+ <partial name="_Navbar"/>
+<div>
+    @RenderBody()
+</div>
 </body>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 </html>

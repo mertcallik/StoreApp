@@ -1,0 +1,101 @@
+﻿@model OrderViewModel
+
+<div class="container px-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <h1 class="display-6">Checkout</h1>
+            <hr />
+
+            <form asp-controller="Order" asp-action="CheckOut" method="post">
+                <div class="row mb-3">
+                    <div class="col">
+                        <label asp-for="Name" class="form-label">Ad</label>
+                        <input asp-for="Name" class="form-control"/>
+                    </div>
+                    <div class="col">
+                        <label asp-for="SurnName" class="form-label">Soyad</label>
+                        <input asp-for="SurnName" class="form-control" />
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label asp-for="City" class="form-label">Şehir</label>
+                        <input asp-for="City" class="form-control"/>
+                    </div>
+                    <div class="col">
+                        <label asp-for="Phone" class="form-label">Telefon</label>
+                        <input asp-for="Phone" class="form-control"/>
+                    </div>
+                    <div class="col">
+                        <label asp-for="Email" class="form-label">Email</label>
+                        <input asp-for="Email" class="form-control"/>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="AdressLine" class="form-label">Adres</label>
+                    <textarea class="form-control" asp-for="AdressLine"></textarea>
+                </div>
+                <h1 class="fw-lighter">Payment</h1>
+
+                <hr/>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="CardHolderName" class="form-label">Cart Holder Name</label>
+                        <input asp-for="CardHolderName" class="form-control"/>
+                    </div>
+                    <div class="col">
+                        <label asp-for="CardNumber" class="form-label">CardNumber</label>
+                        <input asp-for="CardNumber" class="form-control" />
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-3">
+                        <label asp-for="ExpireMonth" class="form-label">ExpireMonth</label>
+                        <input asp-for="ExpireMonth" class="form-control"/>
+                    </div>
+                    <div class="col-3">
+                        <label asp-for="ExpireYear" class="form-label">ExpireYear</label>
+                        <input asp-for="ExpireYear" class="form-control" />
+                    </div>
+                    <div class="col">
+                        <label asp-for="Cvc" class="form-label">Cvv</label>
+                        <input asp-for="Cvc" class="form-control" />
+                    </div>
+                </div>
+
+
+                <div class="mb-5 d-flex p-2 flex-column">
+                    <button type="submit" class="btn btn-outline-dark flex-column ">Ödemeye Geç</button>
+                </div>
+                <div asp-validation-summary="All" class="text-danger"></div>
+            </form>
+        </div>
+        <div class="col-lg-4">
+            <div class="row ">
+                <div class="col-md-12 col-lg-12 order-md-last"> 
+                    <h4 class="text-center">Sepet Detayları</h4>
+                    <ul class="list-group mb-3">
+                        @foreach (var item in Model.Cart.Items)
+                        {
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">@item.Product.Name</h6>
+                                    <small class="text-muted">@item.Product.Description</small>
+                                </div> <span class="text-muted">@item.Quantity Adet</span>  <span class="text-muted">@((item.Product.Price * item.Quantity).ToString("##,###"))TL</span>
+                            </li>
+                        }
+
+
+
+                        <li class="list-group-item d-flex justify-content-between"> <span>Toplam (Türk Lirası)</span> <strong>@Model.Cart.CalculateTotal().ToString("##,###") TL</strong> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+

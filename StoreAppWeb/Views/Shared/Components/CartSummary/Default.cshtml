@@ -1,0 +1,12 @@
+﻿@model Cart
+@{
+}
+@if (Model.Items.Count > 0)
+{
+    <small class="text-light">
+        <a asp-page="/Cart" class="btn btn-warning">Sepetinizde
+        @Model.Items.Sum(i => i.Quantity) adet ürün var
+        @Model.CalculateTotal().ToString("C0")
+        </a>
+    </small>
+}

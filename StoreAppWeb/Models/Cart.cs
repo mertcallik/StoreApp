@@ -4,36 +4,45 @@ namespace StoreAppWeb.Models
 {
     public class Cart
     {
-        public List<CartItem> Items { get; set; } = new();
+        public List<CartItem> Items { get; set; } = new List<CartItem>();
 
-        public void AddItem(Product product,int quanity)
+        public virtual void AddItem(Product product, int quantity)
         {
-            var item = Items.Where(c => c.Product.Id == product.Id).FirstOrDefault();
+            var item = Items.FirstOrDefault(i => i.Product.Id == product.Id);
             if (item==null)
             {
-                Items.Add(new CartItem(){Product = product,Quanity = quanity});
+                Items.Add(new CartItem(){Product = product,Quantity = quantity});
             }
             else
             {
-                item.Quanity+=quanity;
+               item.Quantity+= quantity;
             }
         }
 
-        public void RemoveItem(Product product)
+        public virtual void RemoveItem(Product product)
         {
-            Items.RemoveAll(i => i.Product.Id == product.Id);
+            Items.RemoveAll(c => c.Product.Id==product.Id);
         }
 
         public decimal CalculateTotal()
         {
-            return Items.Sum(i => i.Product.Price * i.Quanity);
+            return Items.Sum(c => (int) c.Product.Price *  c.Quantity);
         }
 
+        public virtual void Clear()
+        {
+            Items.Clear();
+        }
     }
+
     public class CartItem
     {
         public int CartItemId { get; set; }
-        public Product Product { get; set; } = new();
-        public int Quanity { get; set; }
+        public Product Product { get; set; } = new Product();
+        public int Quantity { get; set; }
     }
+
+
+
+
 }
